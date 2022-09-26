@@ -32,7 +32,10 @@ def match(target,engine):
     words=list(target)
     pool=engine["Name"].str.lower().values
     for j in range(len(words)):
-        target=words[j].lower()
+        try:
+            target=words[j].lower()
+        except:
+            target=words[j]
         matched=False
         for k in range(len(pool)):#attempt direct matching
             if target==pool[k]:
