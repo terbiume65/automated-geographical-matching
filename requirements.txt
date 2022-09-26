@@ -2,3 +2,4 @@ EasyNMT
 pandas
 python_Levenshtein
 streamlit
+XlsxWriter
