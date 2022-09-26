@@ -18,8 +18,8 @@ if 'Output' not in st.session_state:
 
 
 df=st.session_state['Dataset'] 
-engine=pd.read_csv("/Users/terbiume65/Documents/UNDP/Matching/correction.csv",encoding="utf-8-sig")
-official=pd.read_csv("/Users/terbiume65/Documents/UNDP/Matching/official.csv",encoding="utf-8-sig")
+engine=pd.read_csv("correction.csv",encoding="utf-8-sig")
+official=pd.read_csv("official.csv",encoding="utf-8-sig")
 
 def CheckEnglish(s):
     isEnglish=True
