@@ -21,6 +21,13 @@ df=st.session_state['Dataset']
 engine=pd.read_csv("correction.csv",encoding="utf-8-sig")
 official=pd.read_csv("official.csv",encoding="utf-8-sig")
 
+def CheckString(s):
+    onlyString=True
+    for i in range(len(list(s))):
+        if type(s[i])!="str":
+            onlyString=False
+    return onlyString
+
 def CheckEnglish(s):
     isEnglish=True
     isEnglish=bool(re.match("^[a-zA-Z\s\.,-/'()]+$",s))
@@ -32,10 +39,7 @@ def match(target,engine):
     words=list(target)
     pool=engine["Name"].str.lower().values
     for j in range(len(words)):
-        try:
-            target=words[j].lower()
-        except:
-            target=words[j]
+        target=words[j].lower()
         matched=False
         for k in range(len(pool)):#attempt direct matching
             if target==pool[k]:
@@ -116,6 +120,12 @@ if st.session_state['Status'] == 'Settings':
 
     if start:
         words=df[choice]
+        if CheckString(words)==False:
+            for i in range(len(words)):
+                try:
+                    words[i]=str(words[i])
+                except:
+                    st.error("The chosen column of your dataset containing country names also contains other data types. Attempt to turn them into string failed. Please check your dataset/chosen column again.")
         results=[]
         n = 8
         batches = [words[i * n:(i + 1) * n] for i in range((len(words) + n - 1) // n )]
