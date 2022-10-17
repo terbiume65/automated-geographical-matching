@@ -3,4 +3,4 @@ pandas
 python_Levenshtein
 streamlit
 XlsxWriter
-
+openpyxl
