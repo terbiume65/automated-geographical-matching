@@ -99,6 +99,8 @@ if submit==True:
 
 if st.session_state['Status'] == 'Settings':
     st.subheader("Your dataset:")
+    st.write(df.dtypes)
+    st.write(df)
     st.table(df)
 
 st.header("Settings")
