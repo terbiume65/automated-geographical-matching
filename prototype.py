@@ -160,8 +160,8 @@ if st.session_state['Status'] == 'Settings':
         outputdf.dataframe(displayoutput)
 
     if st.session_state['Output'] is not None:
+        displayoutput=st.session_state['Output'].astype("str")
         outputlabel.subheader("Output:")
-
         outputdf.dataframe(displayoutput)
         col1, col2 = st.columns(2)
         csv=convert_csv(st.session_state['Output'])
