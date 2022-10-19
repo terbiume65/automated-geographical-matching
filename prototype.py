@@ -155,13 +155,14 @@ if st.session_state['Status'] == 'Settings':
         progressbar.progress(100)
         successful.success("Matching complete")
         st.session_state['Output']=df
+        displayoutput=st.session_state['Output'].astype("str")
         outputlabel.subheader("Output:")
-        outputdf.dataframe(st.session_state['Output'])
+        outputdf.dataframe(displayoutput)
 
     if st.session_state['Output'] is not None:
         outputlabel.subheader("Output:")
 
-        outputdf.dataframe(st.session_state['Output'])
+        outputdf.dataframe(displayoutput)
         col1, col2 = st.columns(2)
         csv=convert_csv(st.session_state['Output'])
         st.download_button(
